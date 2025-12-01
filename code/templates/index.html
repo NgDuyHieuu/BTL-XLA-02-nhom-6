@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghép Ảnh Panorama</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Ghép Ảnh Panorama</h1>
+            <p>Upload 2 ảnh để tạo ảnh panorama tự động</p>
+        </header>
+
+        <div class="upload-section">
+            <form id="uploadForm" enctype="multipart/form-data">
+                <div class="upload-box">
+                    <div class="upload-item">
+                        <label for="image1" class="upload-label">
+                            <div class="upload-placeholder">
+                                <span class="upload-icon">📷</span>
+                                <span class="upload-text">Chọn Ảnh 1</span>
+                            </div>
+                            <input type="file" id="image1" name="image1" accept="image/*" required>
+                        </label>
+                        <div id="preview1" class="preview"></div>
+                    </div>
+
+                    <div class="upload-item">
+                        <label for="image2" class="upload-label">
+                            <div class="upload-placeholder">
+                                <span class="upload-icon">📷</span>
+                                <span class="upload-text">Chọn Ảnh 2</span>
+                            </div>
+                            <input type="file" id="image2" name="image2" accept="image/*" required>
+                        </label>
+                        <div id="preview2" class="preview"></div>
+                    </div>
+                </div>
+
+                <button type="submit" id="submitBtn" class="submit-btn">
+                    <span id="btnText">Ghép Ảnh</span>
+                    <span id="btnLoader" class="loader" style="display: none;"></span>
+                </button>
+            </form>
+        </div>
+
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+        <div id="results" class="results" style="display: none;">
+            <h2>Kết Quả</h2>
+            
+            <div class="result-section">
+                <h3>Ảnh Gốc</h3>
+                <div class="images-grid">
+                    <div class="image-card">
+                        <img id="resultImage1" src="" alt="Ảnh 1">
+                        <p>Ảnh 1</p>
+                    </div>
+                    <div class="image-card">
+                        <img id="resultImage2" src="" alt="Ảnh 2">
+                        <p>Ảnh 2</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-section">
+                <h3>Ảnh So Khớp</h3>
+                <div class="images-grid">
+                    <div class="image-card full-width">
+                        <img id="matchImage" src="" alt="Ảnh So Khớp">
+                        <p>Đường nối giữa các điểm khớp</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-section">
+                <h3>Ảnh Panorama</h3>
+                <div class="images-grid">
+                    <div class="image-card full-width">
+                        <img id="panoramaImage" src="" alt="Ảnh Panorama">
+                        <p>Kết quả ghép ảnh</p>
+                    </div>
+                </div>
+            </div>
+
+            <button id="downloadBtn" class="download-btn">💾 Tải Ảnh Panorama</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
